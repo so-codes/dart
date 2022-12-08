@@ -1,0 +1,1 @@
+This folder will contain all dart code related to flutter
