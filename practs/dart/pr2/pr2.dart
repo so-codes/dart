@@ -64,8 +64,8 @@ void main() {
     18
   ];
 
-  print(max_temp);
-  print(min_temp);
+  // print(max_temp);
+  // print(min_temp);
   int max = max_temp[1];
   String city = max_temp[0];
   int min = min_temp[1];
@@ -81,6 +81,6 @@ void main() {
       city1 = min_temp[i - 1];
     }
   }
-  print("Max temp is :- $city: $max");
-  print("$city1:$min");
+  print("Max temp in $city is $max");
+  print("Min temp in $city1 is $min");
 }
