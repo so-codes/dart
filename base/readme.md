@@ -1,1 +1,1 @@
-Will contain all the basic stuff ig
+Will contain all the basic stuff
