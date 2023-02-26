@@ -11,13 +11,14 @@ class Bank{
     if(bankbal >= wit){
       if((bankbal-wit) <= 5000){
         print("Cannot withdraw min bal 5000 is required");
-      } else if (bankbal>wit){
+      } else{
           bankbal = bankbal - wit;
           print("Account bal after withdrawal is : $bankbal");  
-      } else {
-          print("Withdrawal amount should be less than your ");
       }
     }
+    else {
+          print("Withdrawal amount should be less than your bank bal");
+      }
   }
   
    void displayDetails(){
@@ -40,6 +41,6 @@ void main(){
   customer.displayDetails();
   print("\n");
   
-  customer.withdraw(2000);
+  customer.withdraw(20000);
   customer.displayDetails();
 }
