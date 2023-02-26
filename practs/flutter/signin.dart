@@ -58,12 +58,12 @@ class MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                RaisedButton(
-                  textColor: Colors.white,
-                  color: Colors.blue,
-                  child: Text('Sign In'),
+                ElevatedButton(
+                  // textColor: Colors.white,
+                  // color: Colors.blue,
+                  child: const Text('Sign In'),
                   onPressed: () {},
-                )
+                ),
               ],
             )),
         floatingActionButton: FloatingActionButton(
