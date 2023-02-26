@@ -1,122 +1,239 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      title: 'Navigation with Gesture Detector',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => HomeScreen(),
-        '/second': (context) => InfoScreen(),
-      },
-    ),
-  );
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(title: 'Quiz', initialRoute: '/', routes: {
+      '/': (context) => QuizOne(),
+      '/quiz2': (context) => QuizTwo(),
+      '/quiz3': (context) => QuizThree(),
+      '/check': (context) => Answer(),
+    });
+  }
 }
 
-class HomeScreen extends StatelessWidget {
+int score = 0;
+String quiz1 = " ";
+String quiz2 = " ";
+String quiz3 = " ";
+
+String wrong1 = " ";
+String wrong3 = " ";
+
+class QuizOne extends StatefulWidget {
+  @override
+  MyState createState() => MyState();
+}
+
+class MyState extends State<QuizOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Shoe Info"),
-      ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
-            child: Text(
-              'LiteRide Crocs',
-              style: TextStyle(
-                  color: Color(0xFF055052),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 30),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(55, 30, 55, 10),
-            child: GestureDetector(
-              onLongPress: () {
-                Navigator.pushNamed(context, '/second');
+          title: const Text("Quiz One"),
+          backgroundColor: Colors.deepOrangeAccent),
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const Text('What is the capital of Japan ?',
+                style: TextStyle(fontSize: 18)),
+            const Divider(),
+            RadioListTile(
+                title: const Text("Osaka"),
+                value: "Osaka",
+                groupValue: quiz1,
+                onChanged: (value) {
+                  setState(() {
+                    quiz1 = value.toString();
+                  });
+                }),
+            RadioListTile(
+                title: const Text("Tokyo"),
+                value: "Tokyo",
+                groupValue: quiz1,
+                onChanged: (value) {
+                  setState(() {
+                    quiz1 = value.toString();
+                  });
+                }),
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: () {
+                if (quiz1 == "Tokyo") {
+                  score = score + 1;
+                  wrong1 = "";
+                } else {
+                  wrong1 = "$quiz1 is the wrong answer for Quiz 1";
+                }
+                Navigator.pushNamed(context, '/quiz2');
               },
-              child: Image.network(
-                  'https://i.pinimg.com/originals/7e/4e/a5/7e4ea5aa941d69c2beab520613614b1b.jpg'),
+              child: const Text('Quiz 2'),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(55, 5, 55, 10),
-            child: Text(
-              'Long Press the image to know more info about the shoes',
-              style: TextStyle(
-                  color: Color(0xFF055052),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 17),
-            ),
-          ),
-          Padding(
-              padding: EdgeInsets.all(1),
-              child: Column(
-                children: [
-                  const SizedBox(height: 30),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.blue)),
-                    onPressed: () {
-                      print("Added to cart");
-                    },
-                    child: Text(
-                      'Add to Cart',
-                      style: TextStyle(
-                          color: Color(0xffffffff),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20),
-                    ),
-                  ),
-                ],
-              )),
-        ],
+            Text("You selected : $quiz1"),
+          ],
+        ),
       ),
-      backgroundColor: Color(0xffffdd72),
     );
   }
 }
 
-class InfoScreen extends StatelessWidget {
+class QuizTwo extends StatefulWidget {
+  @override
+  MyState2 createState() => MyState2();
+}
+
+class MyState2 extends State<QuizTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Shoe Details"),
-      ),
-      body: Padding(
-          padding: EdgeInsets.fromLTRB(15, 30, 15, 10),
-          child: Column(
-            children: [
-              Text(
-                  'LiteRide is a revolutionary closed-cell material\n\n' +
-                      'Crocs has created to enhance its comfort options by offering consumers new shoes that “mix support and sink-in softness.\n\n' +
-                      'The LiteRide foam is 40 percent softer and 25 percent lighter than the Classic Croslite foam.',
-                  style: TextStyle(
-                    fontSize: 23,
-                    color: Color(0xFF5F1A2F),
-                  )),
-              const SizedBox(height: 30),
-              ElevatedButton(
-                style: ButtonStyle(
-                    foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.blue)),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/');
-                },
-                child: const Text('Go Back'),
+          title: const Text("Quiz Two"),
+          backgroundColor: Colors.deepOrangeAccent),
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const Text('Java is an _', style: TextStyle(fontSize: 18)),
+            const Divider(),
+            RadioListTile(
+                title: const Text("Object oriented language"),
+                value: "Object oriented language",
+                groupValue: quiz2,
+                onChanged: (value) {
+                  setState(() {
+                    quiz2 = value.toString();
+                  });
+                }),
+            RadioListTile(
+                title: const Text("Bike"),
+                value: "Bike",
+                groupValue: quiz2,
+                onChanged: (value) {
+                  setState(() {
+                    quiz2 = value.toString();
+                  });
+                }),
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
               ),
-            ],
-          )),
-      backgroundColor: Color(0xffffdd72),
+              onPressed: () {
+                if (quiz2 == "Object oriented language" || quiz2 == "Bike") {
+                  score = score + 1;
+                }
+                Navigator.pushNamed(context, '/quiz3');
+              },
+              child: const Text('Quiz 3'),
+            ),
+            Text("You selected : $quiz2"),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class QuizThree extends StatefulWidget {
+  @override
+  MyState3 createState() => MyState3();
+}
+
+class MyState3 extends State<QuizThree> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: const Text("Quiz 3"),
+          backgroundColor: Colors.deepOrangeAccent),
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const Text('Visual studio code is an _',
+                style: TextStyle(fontSize: 18)),
+            const Divider(),
+            RadioListTile(
+                title: const Text("IDE | Code Editor"),
+                value: "IDE",
+                groupValue: quiz3,
+                onChanged: (value) {
+                  setState(() {
+                    quiz3 = value.toString();
+                  });
+                }),
+            RadioListTile(
+                title: const Text("Game"),
+                value: "Game",
+                groupValue: quiz3,
+                onChanged: (value) {
+                  setState(() {
+                    quiz3 = value.toString();
+                  });
+                }),
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: () {
+                if (quiz3 == "IDE") {
+                  score = score + 1;
+                  wrong3 = "";
+                } else {
+                  wrong3 = "$quiz3 is the wrong answer for Quiz 3";
+                }
+                Navigator.pushNamed(context, '/check');
+              },
+              child: const Text('Check'),
+            ),
+            Text("You selected : $quiz3"),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Answer extends StatefulWidget {
+  @override
+  MyState4 createState() => MyState4();
+}
+
+class MyState4 extends State<Answer> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: const Text("Cheking Answers"),
+          backgroundColor: Colors.deepOrangeAccent),
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Text('Total score is $score', style: TextStyle(fontSize: 18)),
+            const Divider(),
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: () {
+                score = 0;
+                Navigator.pushNamed(context, '/');
+              },
+              child: const Text("Redo Quiz"),
+            ),
+            Text("\n\n$wrong1"),
+            Text("\n$wrong3"),
+          ],
+        ),
+      ),
     );
   }
 }
