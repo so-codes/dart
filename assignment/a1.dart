@@ -7,14 +7,11 @@ class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 
-  /// ↓↓ ADDED
-  /// InheritedWidget style accessor to our State object.
   static _MyAppState of(BuildContext context) =>
       context.findAncestorStateOfType<_MyAppState>()!;
 }
 
 class _MyAppState extends State<MyApp> {
-  /// 1) our themeMode "state" field
   ThemeMode _themeMode = ThemeMode.system;
 
   @override
@@ -23,7 +20,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       theme: ThemeData(),
       darkTheme: ThemeData.dark(),
-      themeMode: _themeMode, // 2) ← ← ← use "state" field here //////////////
+      themeMode: _themeMode,
       home: MyHomePage(),
     );
   }
@@ -36,7 +33,6 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MyHomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
