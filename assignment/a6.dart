@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Hide the debug banner
       debugShowCheckedModeBanner: false,
       title: 'json data',
       theme: ThemeData(
@@ -33,7 +32,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List _items = [];
 
-  // Fetch content from the json file
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('/sample.json');
     final data = await json.decode(response);
