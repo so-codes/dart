@@ -35,19 +35,20 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         title: const Text("DASHBOARD 31011221077"),
         elevation: .1,
-        backgroundColor: const Color(0xff3262ff),
+        backgroundColor: const Color(0xffb67cff),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 2.0),
+        color: Color(0xffffffff),
         child: GridView.count(
           crossAxisCount: 2,
           padding: const EdgeInsets.all(3.0),
           children: <Widget>[
-            makeDashboardItem("BOOK STATUS", Icons.book),
+            makeDashboardItem("Home", Icons.home),
+            makeDashboardItem("Shoes", Icons.badge),
             makeDashboardItem("TRENDING", Icons.trending_up_rounded),
-            makeDashboardItem("BACKUP", Icons.backup_sharp),
-            makeDashboardItem("STATUS", Icons.numbers_rounded),
-            makeDashboardItem("REMINDERS", Icons.alarm),
+            makeDashboardItem("Cart", Icons.shopping_bag),
+            makeDashboardItem("Offers", Icons.local_offer),
             makeDashboardItem("SETTINGS", Icons.settings_applications)
           ],
         ),
@@ -60,7 +61,7 @@ class _DashboardState extends State<Dashboard> {
         elevation: 1.0,
         margin: const EdgeInsets.all(8.0),
         child: Container(
-          decoration: const BoxDecoration(color: Color(0xffff9797)),
+          decoration: const BoxDecoration(color: Color(0xffa793ff)),
           child: InkWell(
             onTap: () {},
             child: Column(
